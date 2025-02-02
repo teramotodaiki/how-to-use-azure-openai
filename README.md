@@ -19,10 +19,6 @@
   - Roo Code は VSCode（人気のコードエディタ）で使える拡張機能です。日本語で AI とおしゃべりしながらプログラミングができます。
 - [Dify で始める Azure OpenAI](docs/tools/dify/README.md)
   - Dify は、プログラミングをあまり知らなくても、チャットボットなどの AI アプリを簡単に作れるツールです。
-- [Swarm で始める Azure OpenAI](docs/tools/swarm/README.md)
-  - Swarm は、たくさんの AI が協力して一緒に作業をするツールです。一つの AI がプログラムを書いて、別の AI がチェックするといった分担作業ができます。
-- [OpenAI Realtime Agents で始める Azure OpenAI](docs/tools/realtime-agents/README.md)
-  - Realtime Agents は、AI とリアルタイム（すぐに）おしゃべりしながら一緒に作業ができるツールです。
 
 ## モデルについて
 
