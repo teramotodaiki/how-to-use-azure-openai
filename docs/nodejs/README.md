@@ -8,7 +8,7 @@
 - openaiパッケージ
   - コマンドプロンプト（WindowsのPowerShellやMacのターミナル）で以下のコマンドを実行してインストールします：
     ```bash
-    npm install @azure/openai
+    npm install openai
     ```
 
 ## サンプルプログラム
@@ -19,15 +19,17 @@
 
 1. まず、必要な道具（パッケージ）を用意します：
 ```javascript
-const { OpenAIClient, AzureKeyCredential } = require("@azure/openai");
+import OpenAI from 'openai';
 ```
 
 2. AIクライアントを準備します：
 ```javascript
-const client = new OpenAIClient(
-  "あなたのエンドポイント",
-  new AzureKeyCredential("あなたのAPIキー")
-);
+const client = new OpenAI({
+    apiKey: 'あなたのAPIキー',
+    baseURL: 'あなたのエンドポイント',
+    defaultQuery: { 'api-version': '2024-11-01-preview' },
+    defaultHeaders: { 'api-key': 'あなたのAPIキー' }
+});
 ```
 ※ エンドポイントとAPIキーは、自分のものに置き換えてください。
 
@@ -38,12 +40,12 @@ async function chatWithAI() {
     { role: "user", content: "こんにちは！私の名前は田中です。" }
   ];
 
-  const result = await client.getChatCompletions(
-    "gpt-4",
-    messages
-  );
+  const response = await client.chat.completions.create({
+    model: "gpt-4o-mini",
+    messages: messages
+  });
 
-  console.log("AI:", result.choices[0].message.content);
+  console.log("AI:", response.choices[0].message.content);
 }
 ```
 ※ `gpt-4`は、自分が使えるモデル名に置き換えてください。
@@ -55,10 +57,9 @@ chatWithAI().catch(console.error);
 
 ## プログラムの実行方法
 
-1. プログラムを実行する前に、以下の3つの情報を自分のものに書き換えてください：
+1. プログラムを実行する前に、以下の2つの情報を自分のものに書き換えてください：
    - エンドポイント
    - APIキー
-   - モデル名
 
 2. コマンドプロンプトで以下のコマンドを実行します：
 ```bash

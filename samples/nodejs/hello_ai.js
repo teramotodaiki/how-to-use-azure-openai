@@ -1,10 +1,11 @@
-const { OpenAIClient, AzureKeyCredential } = require("@azure/openai");
+import OpenAI from 'openai';
 
-// AIクライアントを準備します
-const client = new OpenAIClient(
-  "あなたのエンドポイント",  // ⚠️ 自分のエンドポイントに置き換えてください
-  new AzureKeyCredential("あなたのAPIキー")  // ⚠️ 自分のAPIキーに置き換えてください
-);
+const client = new OpenAI({
+    apiKey: 'あなたのAPIキー',
+    baseURL: 'あなたのエンドポイント',
+    defaultQuery: { 'api-version': '2024-11-01-preview' },
+    defaultHeaders: { 'api-key': 'あなたのAPIキー' }
+});
 
 // AIと会話する関数を作ります
 async function chatWithAI() {
@@ -13,13 +14,13 @@ async function chatWithAI() {
   ];
 
   // AIと会話します
-  const result = await client.getChatCompletions(
-    "gpt-4",  // ⚠️ 自分の使えるモデル名に置き換えてください
-    messages
-  );
+  const response = await client.chat.completions.create({
+    model: "gpt-4o-mini",
+    messages: messages
+  });
 
   // AIの返事を表示します
-  console.log("AI:", result.choices[0].message.content);
+  console.log("AI:", response.choices[0].message.content);
 }
 
 // プログラムを実行します
