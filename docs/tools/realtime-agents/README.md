@@ -34,7 +34,7 @@ Realtime Agentsは、OpenAIが作った新しい形のAIアプリの見本です
    AZURE_OPENAI_API_KEY=自分のAPIキー
    AZURE_OPENAI_ENDPOINT=自分のエンドポイント
    AZURE_OPENAI_API_VERSION=2024-11-01-preview
-   AZURE_OPENAI_MODEL=gpt-4o-mini
+   AZURE_OPENAI_MODEL=gpt-4
    ```
 
 ## 使い方
