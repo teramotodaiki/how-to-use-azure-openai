@@ -7,7 +7,7 @@
 ### プログラミング言語別ガイド
 
 - [Python で始める Azure OpenAI](docs/python/README.md)
-  - Python は世界で一番人気のあるプログラミング言語です。初心者にもやさしく、たくさんの参考書やウェブサイトがあります。
+  - Python は初心者にもやさしいプログラミング言語です。たくさんの参考書やウェブサイトがあります。
 - [Node.js で始める Azure OpenAI](docs/nodejs/README.md)
   - Node.js はウェブサイトを作るのによく使われる言語です。JavaScript という言語を使います
 
