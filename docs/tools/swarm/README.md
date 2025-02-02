@@ -27,7 +27,8 @@ Swarmは、OpenAIが開発した実験的な教育用フレームワークです
    client = AzureOpenAI(
        api_key="自分のAPIキー",  
        api_version="2024-11-01-preview",
-       azure_endpoint="自分のエンドポイント"
+       azure_endpoint="自分のエンドポイント",
+       default_model="gpt-4o-mini"  # このモデルを使います
    )
    ```
 

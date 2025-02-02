@@ -41,14 +41,14 @@ async function chatWithAI() {
   ];
 
   const response = await client.chat.completions.create({
-    model: "gpt-4",
+    model: "gpt-4o-mini",
     messages: messages
   });
 
   console.log("AI:", response.choices[0].message.content);
 }
 ```
-※ `gpt-4`は、自分が使えるモデル名に置き換えてください。
+※ モデルは`gpt-4o-mini`（基本）または`gpt-4o`（高性能）を使用できます。詳しくは[モデル比較](../models/README.md)を参照してください。
 
 4. プログラムを実行します：
 ```javascript
