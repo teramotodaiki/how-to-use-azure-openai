@@ -26,7 +26,7 @@ from openai import AzureOpenAI
 ```python
 client = AzureOpenAI(
     api_key="あなたのAPIキー",
-    api_version="2024-02-15-preview",
+    api_version="2024-11-01-preview",
     azure_endpoint="あなたのエンドポイント"
 )
 ```
@@ -35,7 +35,7 @@ client = AzureOpenAI(
 3. AIと会話します：
 ```python
 response = client.chat.completions.create(
-    model="gpt-4",
+    model="gpt-4o-mini",
     messages=[
         {"role": "user", "content": "こんにちは！私の名前は田中です。"}
     ]
@@ -72,7 +72,7 @@ messages = [
 ]
 
 response = client.chat.completions.create(
-    model="gpt-4",
+    model="gpt-4o-mini",
     messages=messages
 )
 ```

@@ -4,29 +4,32 @@
 
 ## Swarmとは？
 
-Swarmは、たくさんのAIが協力して一緒に作業をするツールです。例えば、一つのAIがプログラムを書いて、別のAIがそれをチェックして、また別のAIがテストを書く、というように分担して作業ができます。
+Swarmは、OpenAIが開発した実験的な教育用フレームワークです。複数のAIエージェント（AIロボット）が協力して作業を進める方法を学ぶことができます。
+
+注意：Swarmは実験的なツールで、まだ開発中です。本番環境での使用は想定されていません。
 
 ## Swarmのインストール方法
 
-1. Pythonをインストールします（まだの人は[Pythonの公式サイト](https://www.python.org)からダウンロード）
+1. Python 3.10以上をインストールします（まだの人は[Pythonの公式サイト](https://www.python.org)からダウンロード）
 2. コマンドプロンプト（WindowsのPowerShellやMacのターミナル）を開きます
 3. 以下のコマンドを入力してSwarmをインストールします：
    ```bash
-   pip install swarm-ai
+   pip install git+https://github.com/openai/swarm.git
    ```
 
 ## Azure OpenAIの設定方法
 
 1. 新しいフォルダを作ります
-2. その中に`config.json`というファイルを作り、以下の内容を書きます：
-   ```json
-   {
-     "api_type": "azure",
-     "api_key": "自分のAPIキー",
-     "api_base": "自分のエンドポイント",
-     "api_version": "2023-05-15",
-     "model": "自分が使えるモデル名"
-   }
+2. その中に`config.py`というファイルを作り、以下の内容を書きます：
+   ```python
+   from openai import AzureOpenAI
+
+   client = AzureOpenAI(
+       api_key="自分のAPIキー",  
+       api_version="2024-11-01-preview",
+       azure_endpoint="自分のエンドポイント",
+       default_model="gpt-4o-mini"  # このモデルを使います
+   )
    ```
 
 ## Swarmの使い方
@@ -35,20 +38,34 @@ Swarmは、たくさんのAIが協力して一緒に作業をするツールで�
 1. Pythonファイル（例：`my_team.py`）を作ります
 2. 以下のようなコードを書きます：
    ```python
-   from swarm import Swarm
+   from swarm import Swarm, Agent
+   from config import client
 
-   # AIチームを作ります
-   swarm = Swarm(
-       config_path="config.json",  # 設定ファイルの場所
-       agents=[
-           "プログラマー",    # プログラムを書くAI
-           "レビュアー",      # コードをチェックするAI
-           "テスター"         # テストを書くAI
-       ]
+   # AIエージェントを作ります
+   agent_a = Agent(
+       name="プログラマー",
+       instructions="あなたはプログラムを書くAIです。",
+       client=client
    )
 
+   agent_b = Agent(
+       name="レビュアー",
+       instructions="あなたはプログラムをチェックするAIです。",
+       client=client
+   )
+
+   # Swarmを作ってエージェントたちを登録します
+   swarm = Swarm(client=client)
+   swarm.add_agent(agent_a)
+   swarm.add_agent(agent_b)
+
    # チームに仕事を依頼します
-   swarm.start_task("簡単な電卓プログラムを作ってください")
+   response = swarm.run(
+       agent=agent_a,  # 最初にプログラマーから始めます
+       messages=[{"role": "user", "content": "簡単な電卓プログラムを作ってください"}]
+   )
+
+   print(response.messages[-1]["content"])  # AIの返事を表示します
    ```
 
 ### 結果を見る
@@ -57,11 +74,11 @@ Swarmは、たくさんのAIが協力して一緒に作業をするツールで�
    python my_team.py
    ```
 2. AIたちが協力して作業をしている様子が表示されます
-3. 作業が終わると、結果のファイルが保存されます
+3. 作業が終わると、結果が表示されます
 
 ## 用語解説
 
 - **エージェント**：特定の役割を持って働くAIのことです
-- **Swarm**：たくさんのAIが集まって協力することです（ミツバチの群れのように）
-- **タスク**：AIチームに依頼する作業のことです
-- **コンフィグ**：AIの設定情報をまとめたファイルです
+- **フレームワーク**：プログラムを作るための道具箱のようなものです
+- **実験的**：まだ開発中で、テスト段階という意味です
+- **クライアント**：AIサービスと通信するためのプログラムです
