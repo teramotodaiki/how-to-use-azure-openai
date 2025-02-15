@@ -2,9 +2,9 @@
   "name": "how-to-use-azure-openai",
   "version": "1.0.0",
   "description": "Azure OpenAIをNode.jsで使うサンプルです",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "node hello_ai.js"
   },
   "keywords": [],
   "author": "",
