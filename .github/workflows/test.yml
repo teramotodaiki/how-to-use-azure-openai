@@ -47,7 +47,7 @@ jobs:
 
     - name: Install LangChain dependencies
       run: |
-        pip install langchain==0.3.18
+        pip install "langchain>=0.3.18" "langchain-community>=0.0.1"
     
     - name: Run LangChain sample
       env:
