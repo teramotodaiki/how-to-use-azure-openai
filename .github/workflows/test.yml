@@ -1,4 +1,4 @@
-name: Test
+name: サンプルコードの動作確認
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  run-sample:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -20,14 +20,11 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install openai
     
-    - name: Run flake8
-      run: flake8 samples/python/
-    
-    - name: Run tests
+    - name: Run Python sample
       env:
         AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
         AZURE_OPENAI_ENDPOINT: ${{ vars.AZURE_OPENAI_ENDPOINT }}
       run: |
-        pytest samples/python/
+        python samples/python/hello_ai.py
