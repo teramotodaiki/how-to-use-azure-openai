@@ -30,6 +30,15 @@ Azure OpenAI で利用できるモデルの詳細な比較は[こちら](docs/mo
 - **エンドポイント**: API にアクセスするための住所のようなものです。
 - **API キー**: API を使うための合言葉です。大切な情報なので、他の人に教えてはいけません。
 
+## 環境変数の設定
+
+サンプルコードを実行する前に、以下の環境変数を設定してください：
+
+- `AZURE_OPENAI_API_KEY`: Azure OpenAI の API キー
+- `AZURE_OPENAI_ENDPOINT`: Azure OpenAI のエンドポイント
+
+これらの値は Azure ポータルで確認できます。
+
 ## 注意事項
 
 このガイドでは、Azure OpenAI の API エンドポイントと API キーを既に持っていることを前提としています。
