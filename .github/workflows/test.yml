@@ -44,3 +44,14 @@ jobs:
         AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
         AZURE_OPENAI_ENDPOINT: ${{ vars.AZURE_OPENAI_ENDPOINT }}
       run: npm start
+
+    - name: Install LangChain dependencies
+      run: |
+        pip install "langchain>=0.3.18" "langchain-community>=0.0.1"
+    
+    - name: Run LangChain sample
+      env:
+        AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+        AZURE_OPENAI_ENDPOINT: ${{ vars.AZURE_OPENAI_ENDPOINT }}
+      run: |
+        python samples/langchain/hello_ai.py
