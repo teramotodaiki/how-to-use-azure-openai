@@ -1,6 +1,6 @@
-# Roo Code で Azure OpenAI を使う
+# Cline または Roo Code で Azure OpenAI を使う
 
-このガイドでは、Roo Code で Azure OpenAI を使う方法を説明します。
+このガイドでは、Cline または Roo Code で Azure OpenAI を使う方法を説明します。
 
 ## Roo Code とは？
 
