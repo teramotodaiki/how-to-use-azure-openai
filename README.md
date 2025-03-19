@@ -15,7 +15,7 @@
 
 - [Cursor で始める Azure OpenAI](docs/tools/cursor/README.md)
   - Cursor は、AI がプログラミングを手伝ってくれる特別なエディタです。コードを書くときに AI がアドバイスをくれます。
-- [Roo Code で始める Azure OpenAI](docs/tools/roo-code/README.md)
+- [Cline または Roo Code で始める Azure OpenAI](docs/tools/cline-or-roo-code/README.md)
   - Roo Code は VSCode（人気のコードエディタ）で使える拡張機能です。日本語で AI とおしゃべりしながらプログラミングができます。
 - [Dify で始める Azure OpenAI](docs/tools/dify/README.md)
   - Dify は、プログラミングをあまり知らなくても、チャットボットなどの AI アプリを簡単に作れるツールです。
@@ -32,8 +32,8 @@ Azure OpenAI で利用できるモデルの詳細な比較は[こちら](docs/mo
 
 ## プログラムの準備
 
-サンプルプログラムを動かすには、2つの大切な情報を環境変数として設定する必要があります。
-環境変数は、プログラムに情報を教えてあげる方法の1つです。
+サンプルプログラムを動かすには、2 つの大切な情報を環境変数として設定する必要があります。
+環境変数は、プログラムに情報を教えてあげる方法の 1 つです。
 
 ターミナル（黒い画面）で、以下のように入力してください：
 
